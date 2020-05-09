@@ -17,21 +17,22 @@ of custom names.
   modified to utilize *nomina* using this code:
 
 ```
-bool, String getCustomName(String className)
+play
+bool, String getCustomName(String className) const
 {
-  let nominaInstance = Nomina(EventHandler.Find("nomina"));
+  String nominaName = "NominaAPI";
+  class<Actor> nominaClass = nominaName;
 
-  if (nominaInstance == NULL)
+  if (nominaClass == NULL)
   {
     return false, "";
   }
 
-  bool nameExists;
-  String name;
+  let    nominaAPI  = getDefaultByType(nominaClass);
+  String customName = nominaAPI.getObituary(NULL, NULL, className, false);
+  bool   nameExists = (customName.length() != 0);
 
-  [nameExists, name] = nominaInstance.getName(className);
-
-  return nameExists, name;
+  return nameExists, customName;
 }
 ```
 
