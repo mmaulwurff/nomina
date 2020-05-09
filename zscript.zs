@@ -7,17 +7,30 @@ class Nomina : EventHandler
 
   bool, String getName(String className)
   {
-    String name       = mNames.at(className);
-    bool   nameExists = (name.length() != 0);
+    String customName;
+    int    gameType = getDehackedGameType();
+    switch (gameType)
+    {
+    case GAME_REKKR:    customName = mRekkrNames.at(className); break;
+    case GAME_FREEDOOM: customName = mFreedoomNames.at(className); break;
+    default:            customName = mNames.at(className); break;
+    }
 
-    return nameExists, name;
+    bool nameExists = (customName.length() != 0);
+
+    return nameExists, customName;
   }
 
   override
   void onRegister()
   {
-    mNames = Dictionary.Create();
+    mNames         = Dictionary.Create();
+    mRekkrNames    = Dictionary.Create();
+    mFreedoomNames = Dictionary.Create();
+
     fillNames();
+    fillRekkrNames();
+    fillFreedoomNames();
   }
 
   override
@@ -30,6 +43,25 @@ class Nomina : EventHandler
   }
 
 // private: ////////////////////////////////////////////////////////////////////
+
+  enum Games
+  {
+    GAME_NO_DEHACKED,
+    GAME_REKKR,
+    GAME_FREEDOOM,
+  }
+
+  private
+  static int getDehackedGameType()
+  {
+    bool isRekkr = (Wads.FindLump("REKCREDS") != -1);
+    if (isRekkr) { return GAME_REKKR; }
+
+    bool isFreedoom = (Wads.FindLump("FREEDOOM") != -1);
+    if (isFreedoom) { return GAME_FREEDOOM; }
+
+    return 0;
+  }
 
   private
   void nameActor(Actor thing)
@@ -51,6 +83,18 @@ class Nomina : EventHandler
   void add(String key, String value)
   {
     mNames.insert(key, value);
+  }
+
+  private
+  void addRekkr(String key, String value)
+  {
+    mRekkrNames.insert(key, value);
+  }
+
+  private
+  void addFree(String key, String value)
+  {
+    mFreedoomNames.insert(key, value);
   }
 
   private
@@ -272,6 +316,126 @@ class Nomina : EventHandler
     add("talosmarine"                   , "Talos Marine"                       );
   }
 
+  private
+  void fillRekkrNames()
+  {
+    addRekkr( "Cacodemon"         , "Sorrow"                  );
+    addRekkr( "Demon"             , "Husk"                    );
+    addRekkr( "Spectre"           , "Mean Husk"               );
+    addRekkr( "BaronOfHell"       , "Treebeast"               );
+    addRekkr( "HellKnight"        , "Skelly Belly"            );
+    addRekkr( "Zombieman"         , "Former Human"            );
+    addRekkr( "ShotgunGuy"        , "Jackalope"               );
+    addRekkr( "Archvile"          , "Turret"                  );
+    addRekkr( "Revenant"          , "Mean Imp"                );
+    addRekkr( "Fatso"             , "Former Duke"             );
+    addRekkr( "ChaingunGuy"       , "Former King"             );
+    addRekkr( "Chaingun"          , "Former King"             );
+    addRekkr( "LostSoul"          , "Eyeball"                 );
+    addRekkr( "SpiderMastermind"  , "Dark Foe"                );
+    addRekkr( "Cyberdemon"        , "Dark Foe"                );
+    addRekkr( "Arachnotron"       , "Mean Jackalope"          );
+    addRekkr( "WolfensteinSS"     , "Grotesque"               );
+    addRekkr( "DoomImp"           , "Imp"                     );
+    addRekkr( "HangNoGuts"        , "Spider"                  );
+    addRekkr( "DehackedPickup4"   , "Soul Launcher"           );
+    addRekkr( "DeadShotgunGuy"    , "Remains of Grotesque"    );
+    addRekkr( "DeadZombieMan"     , "Remains of Former Human" );
+    addRekkr( "DeadDemon"         , "Remains of Husk"         );
+    addRekkr( "DeadCacodemon"     , "Remains of Sorrow"       );
+    addRekkr( "GibbedMarineExtra" , "Remains of Viking"       );
+    addRekkr( "GibbedMarine"      , "Remains of Viking"       );
+    addRekkr( "HeadsOnAStick"     , "Tree"                    );
+    addRekkr( "CommanderKeen"     , "Bottled Health"          );
+    addRekkr( "DehackedPickup14"  , "Platemail Armor"         );
+    addRekkr( "DehackedPickup13"  , "Ringmail Armor"          );
+    addRekkr( "DehackedPickup16"  , "Health Essence"          );
+    addRekkr( "Medikit"           , "Bottled Health"          );
+    addRekkr( "DehackedPickup15"  , "Medicinal Herb"          );
+    addRekkr( "ArmorBonus"        , "Armor Patch"             );
+    addRekkr( "Backpack"          , "Sack of Carrying"        );
+    addRekkr( "DehackedPickup12"  , "Mana Seal"               );
+    addRekkr( "DehackedPickup0"   , "Mana Sprite"             );
+    addRekkr( "RocketBox"         , "Stack of Runes"          );
+    addRekkr( "RocketAmmo"        , "Rune"                    );
+    addRekkr( "ShellBox"          , "Sack of Steelshot"       );
+    addRekkr( "Shell"             , "Steelshot"               );
+    addRekkr( "ClipBox"           , "Soul Prism"              );
+    addRekkr( "Berserk"           , "WODE"                    );
+    addRekkr( "Allmap"            , "Map of the Area"         );
+    addRekkr( "RadSuit"           , "Boots of Protection"     );
+    addRekkr( "DehackedPickup17"  , "Shamans Brew"            );
+    addRekkr( "DehackedPickup18"  , "Ethereal Guard"          );
+    addRekkr( "DehackedPickup19"  , "Cloak of deceit"         );
+    addRekkr( "DehackedPickup20"  , "Torch"                   );
+    addRekkr( "DehackedPickup21"  , "Soul"                    );
+    addRekkr( "DeadMarine"        , "Dead Body"               );
+    addRekkr( "DeadLostSoul"      , "Remains of Eyeball"      );
+    addRekkr( "LiveStick"         , "Puppy"                   );
+    addRekkr( "HeadOnAStick"      , "Grass"                   );
+    addRekkr( "Gibs"              , "Blood"                   );
+    addRekkr( "DehackedPickup5"   , "Soul"                    );
+    addRekkr( "DeadStick"         , "Dead Body"               );
+    addRekkr( "RedCard"           , "Red Key"                 );
+    addRekkr( "BlueCard"          , "Blue Key"                );
+    addRekkr( "YellowCard"        , "Yellow Key"              );
+    addRekkr( "ExplosiveBarrel"   , "Barrel"                  );
+    addRekkr( "RedSkull"          , "Red Skeleton Key"        );
+    addRekkr( "BlueSkull"         , "Blue Skeleton Key"       );
+    addRekkr( "YellowSkull"       , "Yellow Skeleton Key"     );
+    addRekkr( "DehackedPickup11"  , "Blessing of the Gods"    );
+    addRekkr( "DehackedPickup10"  , "Holy Relic"              );
+    addRekkr( "DehackedPickup8"   , "Runic Staff"             );
+    addRekkr( "DehackedPickup9"   , "Axe"                     );
+    addRekkr( "NonsolidTwitch"    , "Bell"                    );
+    addRekkr( "HeartColumn"       , "Viking"                  );
+    addRekkr( "HangTLookingUp"    , "Hanging Body"            );
+    addRekkr( "SmallBloodPool"    , "Hanging Body"            );
+
+    addRekkr("Chainsaw"       , "Axe"                  );
+    addRekkr("Fist"           , "Fists"                );
+    addRekkr("Pistol"         , "Soul Bow"             );
+    addRekkr("Shotgun"        , "Steelshot Launcher"   );
+    addRekkr("Chaingun"       , "Soul Launcher"        );
+    addRekkr("RocketLauncher" , "Runic Staff"          );
+    addRekkr("PlasmaRifle"    , "Holy Relic"           );
+    addRekkr("BFG9000"        , "Blessing of the Gods" );
+  }
+
+  private
+  void fillFreedoomNames()
+  {
+    addFree( "Arachnotron"      , "Technospider"             );
+    addFree( "Archvile"         , "Flame Bringer"            );
+    addFree( "BaronOfHell"      , "Pain Lord"                );
+    addFree( "Cacodemon"        , "Trilobite"                );
+    addFree( "ChaingunGuy"      , "Minigun Zombie"           );
+    addFree( "CommanderKeen"    , "Alien Spawn"              );
+    addFree( "Cyberdemon"       , "Assault Tripod"           );
+    addFree( "Demon"            , "Flesh Worm"               );
+    addFree( "DoomImp"          , "Serpentipede"             );
+    addFree( "Fatso"            , "Combat Slug"              );
+    addFree( "LostSoul"         , "Deadflare"                );
+    addFree( "PainElemental"    , "Summoner"                 );
+    addFree( "Revenant"         , "Dark Soldier"             );
+    addFree( "ShotgunGuy"       , "Shotgun Zombie"           );
+    addFree( "SpiderMastermind" , "Large Technospider"       );
+    addFree( "WolfensteinSS"    , "Sailor"                   );
+    addFree( "Zombieman"        , "Zombie"                   );
+
+    addFree( "Chainsaw"         , "Angle Grinder"            );
+    addFree( "Fist"             , "Fists"                    );
+    addFree( "Pistol"           , "Handgun"                  );
+    addFree( "SuperShotgun"     , "Double-barrelled Shotgun" );
+    addFree( "Shotgun"          , "Pump-action Shotgun"      );
+    addFree( "Chaingun"         , "Minigun"                  );
+    addFree( "RocketLauncher"   , "Missile Launcher"         );
+    addFree( "PlasmaRifle"      , "Polaric Energy Cannon"    );
+    addFree( "BFG9000"          , "SKAG 1337"                );
+  }
+
   private Dictionary mNames;
+  private Dictionary mRekkrNames;
+  private Dictionary mFreedoomNames;
 
 } // class na_EventHandler
