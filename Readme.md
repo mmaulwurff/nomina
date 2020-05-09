@@ -45,6 +45,8 @@ This code will return a name provided by *nomina* if it's loaded, and return
 * DoomRL Arsenal
 * Bullet-Eye
 * Compendium
+* REKKR
+* Freedoom
 
 ## Name Sources
 
