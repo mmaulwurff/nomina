@@ -330,6 +330,35 @@ class Nomina : EventHandler
     add("hangedmario"                   , "It's a me, Mario!"                  );
     add("rebirthsnowman"                , "Evil Snowman"                       );
     add("talosmarine"                   , "Talos Marine"                       );
+
+    add("KnifeJerk"          , "Knife Jerk"          );
+    add("PaintJerk"          , "Paintball Jerk"      );
+    add("CannonJerk"         , "Cannon Jerk"         );
+    add("OoziJerk"           , "Oozi Jerk"           );
+    add("EliteOoziJerk"      , "Elite Oozi Jerk"     );
+    add("AngleFish"          , "Angle Fish"          );
+    add("ColorCube"          , "Color Cube"          );
+    add("HexasRanger"        , "Hexas Ranger"        );
+    add("HexanSheriff"       , "Hexan Sheriff"       );
+    add("JetpackJerk"        , "Jetpack Jerk"        );
+    add("MiniDestructinator" , "Mini-Destructinator" );
+    add("ShadiusLeftHand"    , "Shadius"             );
+    add("ShadiusRightHand"   , "Shadius"             );
+    add("DarkSpectra"        , "Dark Spectra"        );
+    add("SpyEye"             , "Spy-Eye"             );
+
+    add("FriendlySquare"           , "Square"          );
+    add("FrightenedSquare"         , "Square"          );
+    add("FriendlySquareWorker"     , "Square Worker"   );
+    add("FrightenedSquareWorker"   , "Square Worker"   );
+    add("FriendlyHexagon"          , "Hexagon"         );
+    add("FrightenedHexagon"        , "Hexagon"         );
+    add("FriendlyHexagonWorker"    , "Hexagon Worker"  );
+    add("FrightenedHexagonWorker"  , "Hexagon Worker"  );
+    add("FriendlyTriangle"         , "Triangle"        );
+    add("FrightenedTriangle"       , "Triangle"        );
+    add("FriendlyTriangleWorker"   , "Triangle Worker" );
+    add("FrightenedTriangleWorker" , "Triangle Worker" );
   }
 
   private

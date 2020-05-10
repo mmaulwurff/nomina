@@ -48,6 +48,7 @@ This code will return a name provided by *nomina* if it's loaded, and return
 * Compendium
 * REKKR
 * Freedoom
+* The Adventures of Square (Episodes 1 & 2)
 
 ## Name Sources
 
