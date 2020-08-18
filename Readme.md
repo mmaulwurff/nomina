@@ -54,3 +54,8 @@ This code will return a name provided by *nomina* if it's loaded, and return
 
 * War Trophies (Accensus, Tapwave)
 * Target Spy (m8f)
+
+
+## Thanks
+
+* Proydoha for Freedoom corrections

@@ -16,6 +16,7 @@ extend class Nomina
     d.add( "Demon"            , "Flesh Worm"               );
     d.add( "DoomImp"          , "Serpentipede"             );
     d.add( "Fatso"            , "Combat Slug"              );
+    d.add( "HellKnight"       , "Pain Bringer"             );
     d.add( "LostSoul"         , "Deadflare"                );
     d.add( "PainElemental"    , "Summoner"                 );
     d.add( "Revenant"         , "Dark Soldier"             );
