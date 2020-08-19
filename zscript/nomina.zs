@@ -26,7 +26,8 @@ class Nomina : EventHandler
     default:            mNames = fillNames();         break;
     }
 
-    mWeaponNameCvar = na_Cvar.of("na_SelectedWeaponName", players[consolePlayer]);
+    mWeaponNameCvar   = na_Cvar.of("na_SelectedWeaponName", players[consolePlayer]);
+    mEnemyNameCvar    = na_Cvar.of("na_AimedEnemyName"    , players[consolePlayer]);
     mUserDefinedNames = na_Data.ofCvar(na_Cvar.of("na_UserDefinedNames"));
   }
 
@@ -42,24 +43,24 @@ class Nomina : EventHandler
   override
   void worldTick()
   {
-    let weapon = players[consolePlayer].readyWeapon;
-    if (weapon != NULL)
     {
-      mWeaponNameCvar.setString(weapon.getTag());
+      let weapon = players[consolePlayer].readyWeapon;
+      let tag    = (weapon != NULL) ? weapon.getTag() : "";
+      mWeaponNameCvar.setString(tag);
+    }
+
+    {
+      let pawn = players[consolePlayer].mo;
+      let tag  = (pawn && pawn.aimTarget()) ? pawn.aimTarget().getTag() : "";
+      mEnemyNameCvar.setString(tag);
     }
   }
 
   override
   void networkProcess(ConsoleEvent event)
   {
-    if (event.name == "na_ApplyWeaponNameChange" && getWeapon() != NULL)
-    {
-      String newTag = mWeaponNameCvar.getString();
-      let weapon = getWeapon();
-      retagClass(weapon.getClassName(), newTag);
-      mUserDefinedNames.add(weapon.getClassName(), newTag);
-      mUserDefinedNames.saveTo(na_Cvar.of("na_UserDefinedNames"));
-    }
+    if      (event.name == "na_ApplyWeaponNameChange") renameWeapon();
+    else if (event.name == "na_ApplyEnemyNameChange")  renameEnemy();
   }
 
 // private: ////////////////////////////////////////////////////////////////////
@@ -70,6 +71,30 @@ class Nomina : EventHandler
     GAME_REKKR,
     GAME_FREEDOOM,
     GAME_D4V,
+  }
+
+  private
+  void renameWeapon()
+  {
+    if (getWeapon() == NULL) { return; }
+
+    String newTag = mWeaponNameCvar.getString();
+    let    weapon = getWeapon();
+    retagClass(weapon.getClassName(), newTag);
+    mUserDefinedNames.add(weapon.getClassName(), newTag);
+    mUserDefinedNames.saveTo(na_Cvar.of("na_UserDefinedNames"));
+  }
+
+  private
+  void renameEnemy()
+  {
+    if (getEnemy() == NULL) { return; }
+
+    String newTag = mEnemyNameCvar.getString();
+    let    enemy  = getEnemy();
+    retagClass(enemy.getClassName(), newTag);
+    mUserDefinedNames.add(enemy.getClassName(), newTag);
+    mUserDefinedNames.saveTo(na_Cvar.of("na_UserDefinedNames"));
   }
 
   private
@@ -106,6 +131,13 @@ class Nomina : EventHandler
   }
 
   private
+  Actor getEnemy()
+  {
+    let pawn = players[consolePlayer].mo;
+    return (pawn && pawn.aimTarget()) ? pawn.aimTarget() : NULL;
+  }
+
+  private
   void nameActor(Actor thing)
   {
     String className = thing.getClassName();
@@ -122,6 +154,7 @@ class Nomina : EventHandler
   private na_Data mNames;
 
   private na_Cvar mWeaponNameCvar;
+  private na_Cvar mEnemyNameCvar;
   private na_Data mUserDefinedNames;
 
 } // class na_EventHandler

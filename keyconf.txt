@@ -1,2 +1,3 @@
 Alias na_ApplyWeaponNameChange "netevent na_ApplyWeaponNameChange";
+Alias na_ApplyEnemyNameChange  "netevent na_ApplyEnemyNameChange";
 Alias na_ClearUserDefinedNames "na_UserDefinedNames \"\""

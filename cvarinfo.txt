@@ -1,2 +1,3 @@
 nosave string na_SelectedWeaponName;
+nosave string na_AimedEnemyName;
 nosave string na_UserDefinedNames;

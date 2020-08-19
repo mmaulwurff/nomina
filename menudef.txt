@@ -12,6 +12,10 @@ OptionMenu na_Options
   Command    "$NOMINA_APPLY"        , na_ApplyWeaponNameChange
 
   StaticText ""
+  TextField  "$NOMINA_EDIT_ENEMY"   , na_AimedEnemyName
+  Command    "$NOMINA_APPLY"        , na_ApplyEnemyNameChange
+
+  StaticText ""
   SafeCommand "$NOMINA_CLEAR"       , na_ClearUserDefinedNames, "$NOMINA_CLEAR_PROMPT"
 
   StaticText ""

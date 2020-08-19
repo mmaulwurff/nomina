@@ -2,6 +2,7 @@
 
 NOMINA_OPTIONS_TITLE = "Nomina Options";
 NOMINA_EDIT_WEAPON   = "Edit weapon name:";
+NOMINA_EDIT_ENEMY    = "Edit enemy name:";
 
 NOMINA_APPLY         = "Apply";
 NOMINA_CLEAR         = "Clear user-defined names";
