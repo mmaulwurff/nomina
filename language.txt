@@ -1,0 +1,11 @@
+[enu default]
+
+NOMINA_OPTIONS_TITLE = "Nomina Options";
+NOMINA_EDIT_WEAPON   = "Edit weapon name:";
+
+NOMINA_APPLY         = "Apply";
+NOMINA_CLEAR         = "Clear user-defined names";
+NOMINA_CLEAR_PROMPT  = "This will remove all custom names defined by you. Are you sure?";
+
+NOMINA_RENAME_WARNING_1 = "Note that renaming when playing DeHackEd";
+NOMINA_RENAME_WARNING_2 = "mods may rename seemingly unrelated things.";

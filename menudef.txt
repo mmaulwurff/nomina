@@ -1,0 +1,20 @@
+AddOptionMenu OptionsMenu
+{
+  Submenu "$NOMINA_OPTIONS_TITLE", na_Options
+}
+
+OptionMenu na_Options
+{
+  Title "$NOMINA_OPTIONS_TITLE"
+
+  StaticText ""
+  TextField  "$NOMINA_EDIT_WEAPON"  , na_SelectedWeaponName
+  Command    "$NOMINA_APPLY"        , na_ApplyWeaponNameChange
+
+  StaticText ""
+  SafeCommand "$NOMINA_CLEAR"       , na_ClearUserDefinedNames, "$NOMINA_CLEAR_PROMPT"
+
+  StaticText ""
+  StaticText "$NOMINA_RENAME_WARNING_1", Black
+  StaticText "$NOMINA_RENAME_WARNING_2", Black
+}

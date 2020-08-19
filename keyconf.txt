@@ -1,0 +1,2 @@
+Alias na_ApplyWeaponNameChange "netevent na_ApplyWeaponNameChange";
+Alias na_ClearUserDefinedNames "na_UserDefinedNames \"\""

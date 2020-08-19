@@ -1,0 +1,2 @@
+nosave string na_SelectedWeaponName;
+nosave string na_UserDefinedNames;

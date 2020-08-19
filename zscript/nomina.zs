@@ -5,6 +5,9 @@ class Nomina : EventHandler
 
   bool, String getName(String className)
   {
+    String userDefinedName = mUserDefinedNames.at(className);
+    if (userDefinedName.length() != 0) { return true, userDefinedName; }
+
     String customName = mNames.at(className);
     bool   nameExists = (customName.length() != 0);
 
@@ -12,7 +15,7 @@ class Nomina : EventHandler
   }
 
   override
-  void onRegister()
+  void worldLoaded(WorldEvent event)
   {
     int gameType = getDehackedGameType();
     switch (gameType)
@@ -22,6 +25,9 @@ class Nomina : EventHandler
     case GAME_D4V:      mNames = fillD4VNames();      break;
     default:            mNames = fillNames();         break;
     }
+
+    mWeaponNameCvar = na_Cvar.of("na_SelectedWeaponName", players[consolePlayer]);
+    mUserDefinedNames = na_Data.ofCvar(na_Cvar.of("na_UserDefinedNames"));
   }
 
   override
@@ -33,6 +39,29 @@ class Nomina : EventHandler
     nameActor(event.thing);
   }
 
+  override
+  void worldTick()
+  {
+    let weapon = players[consolePlayer].readyWeapon;
+    if (weapon != NULL)
+    {
+      mWeaponNameCvar.setString(weapon.getTag());
+    }
+  }
+
+  override
+  void networkProcess(ConsoleEvent event)
+  {
+    if (event.name == "na_ApplyWeaponNameChange" && getWeapon() != NULL)
+    {
+      String newTag = mWeaponNameCvar.getString();
+      let weapon = getWeapon();
+      retagClass(weapon.getClassName(), newTag);
+      mUserDefinedNames.add(weapon.getClassName(), newTag);
+      mUserDefinedNames.saveTo(na_Cvar.of("na_UserDefinedNames"));
+    }
+  }
+
 // private: ////////////////////////////////////////////////////////////////////
 
   enum Games
@@ -41,6 +70,17 @@ class Nomina : EventHandler
     GAME_REKKR,
     GAME_FREEDOOM,
     GAME_D4V,
+  }
+
+  private
+  void retagClass(String className, String newTag)
+  {
+    let i = ThinkerIterator.Create(className);
+    Actor a;
+    while (a = Actor(i.next()))
+    {
+      a.setTag(newTag);
+    }
   }
 
   private
@@ -60,11 +100,15 @@ class Nomina : EventHandler
   }
 
   private
+  Weapon getWeapon()
+  {
+    return players[consolePlayer].readyWeapon;
+  }
+
+  private
   void nameActor(Actor thing)
   {
     String className = thing.getClassName();
-    String tag       = thing.getTag();
-
     bool   nameExists;
     String name;
     [nameExists, name] = getName(className);
@@ -76,5 +120,8 @@ class Nomina : EventHandler
   }
 
   private na_Data mNames;
+
+  private na_Cvar mWeaponNameCvar;
+  private na_Data mUserDefinedNames;
 
 } // class na_EventHandler
