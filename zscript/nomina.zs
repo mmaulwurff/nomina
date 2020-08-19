@@ -27,10 +27,10 @@ class Nomina : EventHandler
   override
   void worldThingSpawned(WorldEvent event)
   {
-    //// Expect the unexpected!
-    //if (event == NULL || event.thing == NULL) { return; }
+    // Expect the unexpected!
+    if (event == NULL || event.thing == NULL) { return; }
 
-    //nameActor(event.thing);
+    nameActor(event.thing);
   }
 
 // private: ////////////////////////////////////////////////////////////////////
