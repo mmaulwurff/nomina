@@ -250,6 +250,10 @@ extend class Nomina
     d.add("FriendlyTriangleWorker"   , "Triangle Worker" );
     d.add("FrightenedTriangleWorker" , "Triangle Worker" );
 
+    // Eriguns weapons
+    d.add("EriFist"      , "Fist"      );
+    d.add("EriMachinegun", "Machinegun");
+
     return d;
   }
 
