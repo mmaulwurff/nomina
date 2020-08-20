@@ -16,9 +16,12 @@ OptionMenu na_Options
   Command    "$NOMINA_APPLY"        , na_ApplyEnemyNameChange
 
   StaticText ""
+  StaticText "$NOMINA_RENAME_WARNING_1", Black
+  StaticText "$NOMINA_RENAME_WARNING_2", Black
+
+  StaticText ""
   SafeCommand "$NOMINA_CLEAR"       , na_ClearUserDefinedNames, "$NOMINA_CLEAR_PROMPT"
 
   StaticText ""
-  StaticText "$NOMINA_RENAME_WARNING_1", Black
-  StaticText "$NOMINA_RENAME_WARNING_2", Black
+  StaticText "$NOMINA_CLEAR_WARNING", Black
 }

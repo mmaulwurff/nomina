@@ -7,6 +7,7 @@ NOMINA_EDIT_ENEMY    = "Edit enemy name:";
 NOMINA_APPLY         = "Apply";
 NOMINA_CLEAR         = "Clear user-defined names";
 NOMINA_CLEAR_PROMPT  = "This will remove all custom names defined by you. Are you sure?";
+NOMINA_CLEAR_WARNING = "Clearing user-defined names takes effect on when new level is started.";
 
 NOMINA_RENAME_WARNING_1 = "Note that renaming when playing DeHackEd";
 NOMINA_RENAME_WARNING_2 = "mods may rename seemingly unrelated things.";
