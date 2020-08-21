@@ -254,6 +254,12 @@ extend class Nomina
     d.add("EriFist"      , "Fist"      );
     d.add("EriMachinegun", "Machinegun");
 
+    // LILA-DOOM
+    d.add("STMinigun"         , "Minigun"          );
+    d.add("STGrenadeLauncher" , "Grenade Launcher" );
+    d.add("STRailgun"         , "Railgun"          );
+    d.add("STBFG10K"          , "BFG10K"           );
+
     return d;
   }
 
