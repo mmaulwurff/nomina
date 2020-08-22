@@ -250,7 +250,7 @@ extend class Nomina
     d.add("FriendlyTriangleWorker"   , "Triangle Worker" );
     d.add("FrightenedTriangleWorker" , "Triangle Worker" );
 
-    // Eriguns weapons
+    // Eriguns 1
     d.add("EriFist"      , "Fist"      );
     d.add("EriMachinegun", "Machinegun");
 
@@ -259,6 +259,11 @@ extend class Nomina
     d.add("STGrenadeLauncher" , "Grenade Launcher" );
     d.add("STRailgun"         , "Railgun"          );
     d.add("STBFG10K"          , "BFG10K"           );
+
+    // Hard Doom
+    d.add("Minigun~"         , "Minigun"          );
+    d.add("GrenadeLauncher~" , "Grenade Launcher" );
+    d.add("BFG10K~"          , "BFG10K"           );
 
     return d;
   }
