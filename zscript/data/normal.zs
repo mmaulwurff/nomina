@@ -265,6 +265,14 @@ extend class Nomina
     d.add("GrenadeLauncher~" , "Grenade Launcher" );
     d.add("BFG10K~"          , "BFG10K"           );
 
+    // Strife
+    d.add("StrifeCrossbow"         , "Crossbow: Electric Bolts"     );
+    d.add("StrifeCrossbow2"        , "Crossbow: Poison Bolts"       );
+    d.add("StrifeGrenadeLauncher"  , "Grenade Launcher: HE"         );
+    d.add("StrifeGrenadeLauncher2" , "Grenade Launcher: Phosphorus" );
+    d.add("Mauler"                 , "Mauler: Scatter"              );
+    d.add("Mauler2"                , "Mauler: Torpedo"              );
+
     return d;
   }
 
