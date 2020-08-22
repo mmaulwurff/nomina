@@ -281,6 +281,16 @@ extend class Nomina
     d.add("64Flamethrower" , "Flamethrower" );
     d.add("64Railgun"      , "Railgun"      );
 
+    // Project MSX
+    d.add("RegularFists"   , "Fists"                );
+    d.add("golampistol"    , "Golam Pistol"         );
+    d.add("hydrashotgun"   , "Hydra Shotgun"        );
+    d.add("barracudarifle" , "Barracuda Rifle"      );
+    d.add("raptorshotgun"  , "Raptor NailShotgun"   );
+    d.add("tauruscannon"   , "Taurus AutoCannon"    );
+    d.add("chimerarifle"   , "Chimaera Pulse Rifle" );
+    d.add("orionSniper"    , "Orion Gauss Cannon"   );
+
     return d;
   }
 
