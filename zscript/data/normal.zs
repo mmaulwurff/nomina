@@ -273,6 +273,14 @@ extend class Nomina
     d.add("Mauler"                 , "Mauler: Scatter"              );
     d.add("Mauler2"                , "Mauler: Torpedo"              );
 
+    // Doom 64
+    d.add("64Fist"         , "Fist"         );
+    d.add("64Uzi"          , "Uzi"          );
+    d.add("64Devastator"   , "Devastator"   );
+    d.add("64Nailgun"      , "Nailgun"      );
+    d.add("64Flamethrower" , "Flamethrower" );
+    d.add("64Railgun"      , "Railgun"      );
+
     return d;
   }
 
