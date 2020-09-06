@@ -1,11 +1,19 @@
 class na_Data
 {
 
+// public: /////////////////////////////////////////////////////////////////////////////////////////
+
   static
-  na_Data of()
+  na_Data fromJson(String path)
   {
     let result = new("na_Data");
-    result.mNames = Dictionary.Create();
+    result.mNames = Dictionary.FromString(Wads.ReadLump(Wads.CheckNumForFullName(path)));
+
+    if (DictionaryIterator.Create(result.mNames).Next() == false)
+    {
+      Console.Printf("[ERROR] Nomina: no data in %s.", path);
+    }
+
     return result;
   }
 
@@ -31,6 +39,8 @@ class na_Data
   {
     cvar.setString(mNames.toString());
   }
+
+// private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private Dictionary mNames;
 

@@ -17,13 +17,12 @@ class Nomina : EventHandler
   override
   void worldLoaded(WorldEvent event)
   {
-    int gameType = getDehackedGameType();
-    switch (gameType)
+    switch (getDehackedGameType())
     {
-    case GAME_REKKR:    mNames = fillRekkrNames();    break;
-    case GAME_FREEDOOM: mNames = fillFreedoomNames(); break;
-    case GAME_D4V:      mNames = fillD4VNames();      break;
-    default:            mNames = fillNames();         break;
+    case GAME_REKKR:    mNames = na_Data.fromJson("data/rekkr.json");    break;
+    case GAME_FREEDOOM: mNames = na_Data.fromJson("data/freedoom.json"); break;
+    case GAME_D4V:      mNames = na_Data.fromJson("data/d4v.json");      break;
+    default:            mNames = na_Data.fromJson("data/normal.json");   break;
     }
 
     mWeaponNameCvar   = na_Cvar.of("na_SelectedWeaponName", players[consolePlayer]);
