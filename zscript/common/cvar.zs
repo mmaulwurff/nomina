@@ -28,25 +28,25 @@ class na_Cvar
 // public: /////////////////////////////////////////////////////////////////////////////////////////
 
   static
-  na_Cvar from(String name, PlayerInfo player = NULL)
+  na_Cvar from(String name)
   {
     let result = new("na_Cvar");
 
-    result._player = player;
-    result._name   = name;
-    result._cvar   = NULL;
+    result.mPlayer = players[consolePlayer];
+    result.mName   = name;
+    result.mCvar   = NULL;
 
     result.load();
 
     return result;
   }
 
-  String getString() { load(); return _cvar.GetString(); }
-  bool   getBool()   { load(); return _cvar.GetInt();    }
-  int    getInt()    { load(); return _cvar.GetInt();    }
-  double getDouble() { load(); return _cvar.GetFloat();  }
+  String getString() { load(); return mCvar.GetString(); }
+  bool   getBool()   { load(); return mCvar.GetInt();    }
+  int    getInt()    { load(); return mCvar.GetInt();    }
+  double getDouble() { load(); return mCvar.GetFloat();  }
 
-  void setString(String value) { load(); _cvar.SetString(value); }
+  void setString(String value) { load(); mCvar.SetString(value); }
 
 // private: ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -55,22 +55,22 @@ class na_Cvar
   {
     if (isLoaded()) return;
 
-    _cvar = Cvar.GetCvar(_name, _player);
+    mCvar = Cvar.GetCvar(mName, mPlayer);
 
     if (!isLoaded())
     {
-      na_Log.error(string.format("cvar %s not found", _name));
+      na_Log.error(string.format("cvar %s not found", mName));
     }
   }
 
   private
   bool isLoaded() const
   {
-    return (_cvar != NULL);
+    return (mCvar != NULL);
   }
 
-  private PlayerInfo     _player;
-  private String         _name;
-  private transient Cvar _cvar;
+  private PlayerInfo     mPlayer;
+  private String         mName;
+  private transient Cvar mCvar;
 
-} // class na_cvar
+} // class na_Cvar

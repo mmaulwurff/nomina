@@ -6,6 +6,7 @@ version "4.4.2"
 #include "zscript/common/enemy_watcher.zs"
 #include "zscript/common/weapon_watcher.zs"
 #include "zscript/common/log.zs"
+#include "zscript/common/menu_fields.zs"
 
 #include "zscript/server/server.zs"
 #include "zscript/server/netevent_parser.zs"
@@ -14,4 +15,3 @@ version "4.4.2"
 #include "zscript/server/storage.zs"
 
 #include "zscript/client/client.zs"
-#include "zscript/client/menu_fields.zs"

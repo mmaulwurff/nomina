@@ -27,9 +27,9 @@ class na_Log
   }
 
   static
-  void message(string text)
+  void playerMessage(string text, int playerNumber)
   {
-    Console.printf("Nomina: %s.", text);
+    Console.printf("Nomina: %s: %s.", players[playerNumber].getUserName(), text);
   }
 
 } // class na_Log

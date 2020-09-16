@@ -24,16 +24,14 @@ class na_Client play
 // public: /////////////////////////////////////////////////////////////////////////////////////////
 
   static
-  na_Client from()
+  na_Client from(na_MenuFields menu)
   {
     let result = new("na_Client");
 
     PlayerInfo player = players[consolePlayer];
     result.mEnemyWatcher  = na_EnemyWatcher.from(player);
     result.mWeaponWatcher = na_WeaponWatcher.from(player);
-    result.mMenu          = na_MenuFields.from( na_Cvar.from("na_aimed_enemy_name"     , player)
-                                              , na_Cvar.from("na_selected_weapon_name" , player)
-                                              );
+    result.mMenu          = menu;
 
     result.mMenu.setEnemyName("");
     result.mMenu.setWeaponName("");

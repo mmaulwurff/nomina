@@ -24,15 +24,15 @@ class na_Server play
 // public: /////////////////////////////////////////////////////////////////////////////////////////
 
   static
-  na_Server from()
+  na_Server from(na_MenuFields menu)
   {
     let result = new("na_Server");
 
-    PlayerInfo mainPlayer  = players[consolePlayer];
+    PlayerInfo player = players[consolePlayer];
     result.mWeaponWatchers = na_Watchers.from();
     result.mEnemyWatchers  = na_Watchers.from();
-    result.mStorage        = na_Storage.from(na_Cvar.from("na_user_defined_names", mainPlayer));
-
+    result.mStorage        = na_Storage.from(na_Cvar.from("na_user_defined_names"));
+    result.mMenu           = menu;
     return result;
   }
 
@@ -67,7 +67,7 @@ class na_Server play
     case na_CommandResetEnemyInstance    : resetEnemyInstance  (playerNumber); break;
     case na_CommandResetEnemyClass       : resetEnemyClass     (playerNumber); break;
 
-    case na_CommandClearUserDefinedNames : clearUserDefinedNames(); break;
+    case na_CommandClearUserDefinedNames : clearUserDefinedNames(playerNumber); break;
     }
   }
 
@@ -95,28 +95,28 @@ class na_Server play
   void renameWeaponInstance(int playerNumber, string newName)
   {
     na_Renamer.renameInstance(mWeaponWatchers.of(playerNumber).getWatched(), newName);
-    na_Log.message(string.format("renamed current weapon to %s", newName));
+    na_Log.playerMessage(string.format("renamed current weapon to %s", newName), playerNumber);
   }
 
   private
   void renameWeaponClass(int playerNumber, string newName)
   {
     renameClass(mWeaponWatchers.of(playerNumber).getWatched(), newName);
-    na_Log.message(string.format("renamed current weapon class to %s", newName));
+    na_Log.playerMessage(string.format("renamed current weapon class to %s", newName), playerNumber);
   }
 
   private
   void renameEnemyInstance(int playerNumber, string newName)
   {
     na_Renamer.renameInstance(mEnemyWatchers.of(playerNumber).getWatched(), newName);
-    na_Log.message(string.format("renamed aimed enemy to %s", newName));
+    na_Log.playerMessage(string.format("renamed aimed enemy to %s", newName), playerNumber);
   }
 
   private
   void renameEnemyClass(int playerNumber, string newName)
   {
     renameClass(mEnemyWatchers.of(playerNumber).getWatched(), newName);
-    na_Log.message(string.format("renamed aimed enemy class to %s", newName));
+    na_Log.playerMessage(string.format("renamed aimed enemy class to %s", newName), playerNumber);
   }
 
   private
@@ -132,32 +132,36 @@ class na_Server play
   void resetWeaponInstance(int playerNumber)
   {
     na_Renamer.resetInstance(mWeaponWatchers.of(playerNumber).getWatched());
-    na_Log.message("reset current weapon name");
+    na_Log.playerMessage("reset current weapon name", playerNumber);
+    mMenu.setWeaponName("");
   }
 
   private
   void resetWeaponClass(int playerNumber)
   {
     resetClass(mWeaponWatchers.of(playerNumber).getWatched());
-    na_Log.message("reset current weapon class name");
+    na_Log.playerMessage("reset current weapon class name", playerNumber);
+    mMenu.setWeaponName("");
   }
 
   private
   void resetEnemyInstance(int playerNumber)
   {
     na_Renamer.resetInstance(mEnemyWatchers.of(playerNumber).getWatched());
-    na_Log.message("reset aimed enemy name");
+    na_Log.playerMessage("reset aimed enemy name", playerNumber);
+    mMenu.setEnemyName("");
   }
 
   private
   void resetEnemyClass(int playerNumber)
   {
     resetClass(mEnemyWatchers.of(playerNumber).getWatched());
-    na_Log.message("reset aimed enemy class name");
+    na_Log.playerMessage("reset aimed enemy class name", playerNumber);
+    mMenu.setEnemyName("");
   }
 
   private
-  void clearUserDefinedNames()
+  void clearUserDefinedNames(int playerNumber)
   {
     mStorage.clearUserDefinedNames();
 
@@ -168,11 +172,14 @@ class na_Server play
       na_Renamer.renameClass(actorClass, getDefaultByType(actorClass).getTag());
     }
 
-    na_Log.message("reset all user-defined names");
+    na_Log.playerMessage("reset all user-defined names", playerNumber);
+    mMenu.setWeaponName("");
+    mMenu.setEnemyName("");
   }
 
-  private na_Watchers mWeaponWatchers;
-  private na_Watchers mEnemyWatchers;
-  private na_Storage  mStorage;
+  private na_Watchers   mWeaponWatchers;
+  private na_Watchers   mEnemyWatchers;
+  private na_Storage    mStorage;
+  private na_MenuFields mMenu;
 
 } // class na_Server

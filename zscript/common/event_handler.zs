@@ -25,14 +25,17 @@ class Nomina : EventHandler
   {
     if (mServer == NULL)
     {
-      mServer = na_Server.from();
+      mMenu = na_MenuFields.from( na_Cvar.from("na_aimed_enemy_name")
+                                , na_Cvar.from("na_selected_weapon_name")
+                                );
+      mServer = na_Server.from(mMenu);
     }
 
     mServer.addPlayer(event.playerNumber);
 
     if (event.playerNumber == consolePlayer)
     {
-      mClient = na_Client.from();
+      mClient = na_Client.from(mMenu);
     }
   }
 
@@ -61,5 +64,6 @@ class Nomina : EventHandler
 
   private na_Server mServer;
   private na_Client mClient;
+  private na_MenuFields mMenu;
 
 } // class Nomina
