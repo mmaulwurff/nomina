@@ -16,3 +16,14 @@ NA_RESET_WEAPON_CLASS     = "Set default name for all such weapons";
 
 NA_CLEAR                  = "Clear user-defined names";
 NA_CLEAR_PROMPT           = "This will remove all custom names. Are you sure?";
+
+NA_MANUAL_TITLE = "Nomina Manual";
+
+NA_MANUAL = "When a class is renamed, the new name is stored between games.\
+When an single enemy or weapon is renamed, the name is not stored.\
+\
+In multiplayer all renames propagate to other players (everybody see your\
+changes). Despite that name changes are synchronized, there is still a chance of\
+desyncing if some mod has logic that depends on monster/weapon tags, and players\
+have different custom names from the start. Because of that, it's recommended to\
+start with cleared custom names when playing with such mods.";

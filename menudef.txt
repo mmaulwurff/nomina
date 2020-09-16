@@ -8,12 +8,12 @@ OptionMenu na_Options
   Title "$NA_OPTIONS_TITLE"
 
   StaticText  ""
-  TextField   "$NA_ENEMY_NAME"            , na_aimed_enemy_name
-  Command     "$NA_RENAME_ENEMY_INSTANCE" , na_rename_enemy_instance
-  Command     "$NA_RENAME_ENEMY_CLASS"    , na_rename_enemy_class
+  TextField   "$NA_ENEMY_NAME"             , na_aimed_enemy_name
+  Command     "$NA_RENAME_ENEMY_INSTANCE"  , na_rename_enemy_instance
+  Command     "$NA_RENAME_ENEMY_CLASS"     , na_rename_enemy_class
   StaticText  ""
-  SafeCommand "$NA_RESET_ENEMY_INSTANCE"  , na_reset_enemy_instance
-  SafeCommand "$NA_RESET_ENEMY_CLASS"     , na_reset_enemy_class
+  SafeCommand "$NA_RESET_ENEMY_INSTANCE"   , na_reset_enemy_instance
+  SafeCommand "$NA_RESET_ENEMY_CLASS"      , na_reset_enemy_class
 
   StaticText  ""
   TextField   "$NA_WEAPON_NAME"            , na_selected_weapon_name
@@ -25,4 +25,14 @@ OptionMenu na_Options
 
   StaticText  ""
   SafeCommand "$NA_CLEAR", na_clear_user_defined_names, "$NA_CLEAR_PROMPT"
+
+  StaticText  ""
+  Submenu     "$NA_MANUAL_TITLE", na_Manual
+}
+
+OptionMenu na_Manual
+{
+  Title "$NA_MANUAL_TITLE"
+
+  StaticText "$NA_MANUAL"
 }
