@@ -83,6 +83,15 @@ class na_Server play
 // private: ////////////////////////////////////////////////////////////////////////////////////////
 
   private
+  void renameClass(Actor instance, string newName)
+  {
+    if (instance == NULL) return;
+
+    mStorage.setName(instance.getClassName(), newName);
+    na_Renamer.renameClass(instance.getClass(), newName);
+  }
+
+  private
   void renameWeaponInstance(int playerNumber, string newName)
   {
     na_Renamer.renameInstance(mWeaponWatchers.of(playerNumber).getWatched(), newName);
@@ -91,11 +100,7 @@ class na_Server play
   private
   void renameWeaponClass(int playerNumber, string newName)
   {
-    Actor watched = mWeaponWatchers.of(playerNumber).getWatched();
-    if (watched == NULL) return;
-
-    mStorage.setName(watched.getClassName(), newName);
-    na_Renamer.renameClass(watched.getClass(), newName);
+    renameClass(mWeaponWatchers.of(playerNumber).getWatched(), newName);
   }
 
   private
@@ -107,11 +112,16 @@ class na_Server play
   private
   void renameEnemyClass(int playerNumber, string newName)
   {
-    Actor watched = mEnemyWatchers.of(playerNumber).getWatched();
-    if (watched == NULL) return;
+    renameClass(mEnemyWatchers.of(playerNumber).getWatched(), newName);
+  }
 
-    mStorage.setName(watched.getClassName(), newName);
-    na_Renamer.renameClass(watched.getClass(), newName);
+  private
+  void resetClass(Actor instance)
+  {
+    if (instance == NULL) return;
+
+    mStorage.setName(instance.getClassName(), na_Renamer.getDefaultName(instance));
+    na_Renamer.resetClass(instance.getClass());
   }
 
   private
@@ -123,11 +133,7 @@ class na_Server play
   private
   void resetWeaponClass(int playerNumber)
   {
-    Actor watched = mWeaponWatchers.of(playerNumber).getWatched();
-    if (watched == NULL) return;
-
-    mStorage.setName(watched.getClassName(), na_Renamer.getDefaultName(watched));
-    na_Renamer.resetClass(watched.getClass());
+    resetClass(mWeaponWatchers.of(playerNumber).getWatched());
   }
 
   private
@@ -139,11 +145,7 @@ class na_Server play
   private
   void resetEnemyClass(int playerNumber)
   {
-    Actor watched = mEnemyWatchers.of(playerNumber).getWatched();
-    if (watched == NULL) return;
-
-    mStorage.setName(watched.getClassName(), na_Renamer.getDefaultName(watched));
-    na_Renamer.resetClass(watched.getClass());
+    resetClass(mEnemyWatchers.of(playerNumber).getWatched());
   }
 
   private
