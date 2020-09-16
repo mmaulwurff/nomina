@@ -35,11 +35,32 @@ class na_Renamer play
   }
 
   static
+  void resetClass(Class<Actor> classToReset)
+  {
+    string defaultName = getDefaultByType(classToReset).getTag();
+    renameClass(classToReset, defaultName);
+  }
+
+  static
   void renameInstance(Actor instance, string newName)
   {
     if (instance == NULL) return;
 
     instance.setTag(newName);
+  }
+
+  static
+  void resetInstance(Actor instance)
+  {
+    if (instance == NULL) return;
+
+    instance.setTag(getDefaultName(instance));
+  }
+
+  static
+  string getDefaultName(Actor instance)
+  {
+    return getDefaultByType(instance.getClass()).getTag();
   }
 
 } // class na_Renamer

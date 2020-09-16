@@ -106,6 +106,8 @@ class na_Server play
   void renameEnemyClass(int playerNumber, string newName)
   {
     Actor watched = mEnemyWatchers.of(playerNumber).getWatched();
+    if (watched == NULL) return;
+
     mStorage.setName(watched.getClassName(), newName);
     na_Renamer.renameClass(watched.getClass(), newName);
   }
@@ -113,10 +115,7 @@ class na_Server play
   private
   void resetWeaponInstance(int playerNumber)
   {
-    Actor watched = mWeaponWatchers.of(playerNumber).getWatched();
-    if (watched == NULL) return;
-
-    na_Renamer.renameInstance(watched, getDefaultName(watched));
+    na_Renamer.resetInstance(mWeaponWatchers.of(playerNumber).getWatched());
   }
 
   private
@@ -125,9 +124,8 @@ class na_Server play
     Actor watched = mWeaponWatchers.of(playerNumber).getWatched();
     if (watched == NULL) return;
 
-    string defaultName = getDefaultName(watched);
-    mStorage.setName(watched.getClassName(), defaultName);
-    na_Renamer.renameClass(watched.getClass(), defaultName);
+    mStorage.setName(watched.getClassName(), na_Renamer.getDefaultName(watched));
+    na_Renamer.resetClass(watched.getClass());
   }
 
   private
@@ -141,12 +139,6 @@ class na_Server play
       Class<Actor> actorClass = allActorClasses[i];
       na_Renamer.renameClass(actorClass, getDefaultByType(actorClass).getTag());
     }
-  }
-
-  private
-  string getDefaultName(Actor thing)
-  {
-    return getDefaultByType(thing.getClass()).getTag();
   }
 
   private na_Watchers mWeaponWatchers;
