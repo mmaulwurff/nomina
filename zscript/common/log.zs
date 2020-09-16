@@ -29,7 +29,7 @@ class na_Log
   static
   void message(string text)
   {
-    Console.printf("%s", text);
+    Console.printf("Nomina: %s.", text);
   }
 
 } // class na_Log

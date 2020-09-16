@@ -95,24 +95,28 @@ class na_Server play
   void renameWeaponInstance(int playerNumber, string newName)
   {
     na_Renamer.renameInstance(mWeaponWatchers.of(playerNumber).getWatched(), newName);
+    na_Log.message(string.format("renamed current weapon to %s", newName));
   }
 
   private
   void renameWeaponClass(int playerNumber, string newName)
   {
     renameClass(mWeaponWatchers.of(playerNumber).getWatched(), newName);
+    na_Log.message(string.format("renamed current weapon class to %s", newName));
   }
 
   private
   void renameEnemyInstance(int playerNumber, string newName)
   {
     na_Renamer.renameInstance(mEnemyWatchers.of(playerNumber).getWatched(), newName);
+    na_Log.message(string.format("renamed aimed enemy to %s", newName));
   }
 
   private
   void renameEnemyClass(int playerNumber, string newName)
   {
     renameClass(mEnemyWatchers.of(playerNumber).getWatched(), newName);
+    na_Log.message(string.format("renamed aimed enemy class to %s", newName));
   }
 
   private
@@ -128,24 +132,28 @@ class na_Server play
   void resetWeaponInstance(int playerNumber)
   {
     na_Renamer.resetInstance(mWeaponWatchers.of(playerNumber).getWatched());
+    na_Log.message("reset current weapon name");
   }
 
   private
   void resetWeaponClass(int playerNumber)
   {
     resetClass(mWeaponWatchers.of(playerNumber).getWatched());
+    na_Log.message("reset current weapon class name");
   }
 
   private
   void resetEnemyInstance(int playerNumber)
   {
     na_Renamer.resetInstance(mEnemyWatchers.of(playerNumber).getWatched());
+    na_Log.message("reset aimed enemy name");
   }
 
   private
   void resetEnemyClass(int playerNumber)
   {
     resetClass(mEnemyWatchers.of(playerNumber).getWatched());
+    na_Log.message("reset aimed enemy class name");
   }
 
   private
@@ -159,6 +167,8 @@ class na_Server play
       Class<Actor> actorClass = allActorClasses[i];
       na_Renamer.renameClass(actorClass, getDefaultByType(actorClass).getTag());
     }
+
+    na_Log.message("reset all user-defined names");
   }
 
   private na_Watchers mWeaponWatchers;
