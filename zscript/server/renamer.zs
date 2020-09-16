@@ -16,15 +16,15 @@
  */
 
 /**
- * This class renames all existing instances of a class.
+ * This class handles renaming.
  */
-class na_ClassRenamer play
+class na_Renamer play
 {
 
 // public: /////////////////////////////////////////////////////////////////////////////////////////
 
   static
-  void rename(Class<Actor> classToRename, string newName)
+  void renameClass(Class<Actor> classToRename, string newName)
   {
     let i = ThinkerIterator.Create(classToRename);
     Actor a;
@@ -34,4 +34,12 @@ class na_ClassRenamer play
     }
   }
 
-} // class na_ClassRenamer
+  static
+  void renameInstance(Actor instance, string newName)
+  {
+    if (instance == NULL) return;
+
+    instance.setTag(newName);
+  }
+
+} // class na_Renamer

@@ -19,11 +19,19 @@ enum na_Commands
 {
 
   na_CommandUndefined = 0,
+
   na_CommandNothing,
+
   na_CommandRenameWeaponInstance,
   na_CommandRenameWeaponClass,
   na_CommandRenameEnemyInstance,
   na_CommandRenameEnemyClass,
+
+  na_CommandResetWeaponInstance,
+  na_CommandResetWeaponClass,
+  na_CommandResetEnemyInstance,
+  na_CommandResetEnemyClass,
+
   na_CommandClearUserDefinedNames,
 
 } // enum na_Commands
@@ -49,6 +57,12 @@ class na_NeteventParser
     if (args[0] == "na_rename_weapon_class"     ) return na_CommandRenameWeaponClass     , args[1];
     if (args[0] == "na_rename_enemy_instance"   ) return na_CommandRenameEnemyInstance   , args[1];
     if (args[0] == "na_rename_enemy_class"      ) return na_CommandRenameEnemyClass      , args[1];
+
+    if (args[0] == "na_reset_weapon_instance"   ) return na_CommandResetWeaponInstance   , "";
+    if (args[0] == "na_reset_weapon_class"      ) return na_CommandResetWeaponClass      , "";
+    if (args[0] == "na_reset_enemy_instance"    ) return na_CommandResetEnemyInstance    , "";
+    if (args[0] == "na_reset_enemy_class"       ) return na_CommandResetEnemyClass       , "";
+
     if (args[0] == "na_clear_user_defined_names") return na_CommandClearUserDefinedNames , "";
 
     return na_CommandNothing, "";

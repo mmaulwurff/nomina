@@ -5,10 +5,14 @@ NA_OPTIONS_TITLE          = "Nomina Options";
 NA_ENEMY_NAME             = "Enemy name:";
 NA_RENAME_ENEMY_INSTANCE  = "Rename this enemy";
 NA_RENAME_ENEMY_CLASS     = "Rename all such enemies";
+NA_RESET_ENEMY_INSTANCE   = "Set default name for this enemy";
+NA_RESET_ENEMY_CLASS      = "Set default name for all such enemies";
 
 NA_WEAPON_NAME            = "Weapon name:";
 NA_RENAME_WEAPON_INSTANCE = "Rename this weapon";
 NA_RENAME_WEAPON_CLASS    = "Rename all such weapons";
+NA_RESET_WEAPON_INSTANCE  = "Set default name for this weapon";
+NA_RESET_WEAPON_CLASS     = "Set default name for all such weapons";
 
 NA_CLEAR                  = "Clear user-defined names";
 NA_CLEAR_PROMPT           = "This will remove all custom names. Are you sure?";

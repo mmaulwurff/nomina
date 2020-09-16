@@ -6,4 +6,9 @@ Alias na_rename_weapon_class    "eval + na_rename_weapon_class:    $na_selected_
 Alias na_rename_enemy_instance  "eval + na_rename_enemy_instance:  $na_aimed_enemy_name     na_register; netevent $na_register"
 Alias na_rename_enemy_class     "eval + na_rename_enemy_class:     $na_aimed_enemy_name     na_register; netevent $na_register"
 
+Alias na_reset_enemy_instance  "netevent na_reset_enemy_instance"
+Alias na_reset_enemy_class     "netevent na_reset_enemy_class"
+Alias na_reset_weapon_instance "netevent na_reset_weapon_instance"
+Alias na_reset_weapon_class    "netevent na_reset_weapon_class"
+
 Alias na_clear_user_defined_names "netevent na_clear_user_defined_names"
