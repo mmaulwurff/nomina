@@ -1,3 +1,9 @@
-Alias na_ApplyWeaponNameChange "netevent na_ApplyWeaponNameChange";
-Alias na_ApplyEnemyNameChange  "netevent na_ApplyEnemyNameChange";
-Alias na_ClearUserDefinedNames "na_UserDefinedNames \"\""
+// These aliases form commands that are sent from client to server.
+// They work by appending the variable contents to a string command.
+
+Alias na_rename_weapon_instance "eval + na_rename_weapon_instance: $na_selected_weapon_name na_register; netevent $na_register"
+Alias na_rename_weapon_class    "eval + na_rename_weapon_class:    $na_selected_weapon_name na_register; netevent $na_register"
+Alias na_rename_enemy_instance  "eval + na_rename_enemy_instance:  $na_aimed_enemy_name     na_register; netevent $na_register"
+Alias na_rename_enemy_class     "eval + na_rename_enemy_class:     $na_aimed_enemy_name     na_register; netevent $na_register"
+
+Alias na_clear_user_defined_names "netevent na_clear_user_defined_names"

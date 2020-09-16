@@ -1,13 +1,14 @@
 [enu default]
 
-NOMINA_OPTIONS_TITLE = "Nomina Options";
-NOMINA_EDIT_WEAPON   = "Edit weapon name:";
-NOMINA_EDIT_ENEMY    = "Edit enemy name:";
+NA_OPTIONS_TITLE          = "Nomina Options";
 
-NOMINA_APPLY         = "Apply";
-NOMINA_CLEAR         = "Clear user-defined names";
-NOMINA_CLEAR_PROMPT  = "This will remove all custom names defined by you. Are you sure?";
-NOMINA_CLEAR_WARNING = "Clearing user-defined names takes effect on when new level is started.";
+NA_ENEMY_NAME             = "Enemy name:";
+NA_RENAME_ENEMY_INSTANCE  = "Rename this enemy";
+NA_RENAME_ENEMY_CLASS     = "Rename all such enemies";
 
-NOMINA_RENAME_WARNING_1 = "Note that renaming when playing DeHackEd";
-NOMINA_RENAME_WARNING_2 = "mods may rename seemingly unrelated things.";
+NA_WEAPON_NAME            = "Weapon name:";
+NA_RENAME_WEAPON_INSTANCE = "Rename this weapon";
+NA_RENAME_WEAPON_CLASS    = "Rename all such weapons";
+
+NA_CLEAR                  = "Clear user-defined names";
+NA_CLEAR_PROMPT           = "This will remove all custom names. Are you sure?";

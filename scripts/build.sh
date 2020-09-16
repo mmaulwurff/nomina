@@ -12,6 +12,6 @@ set -e
 name=build/nomina-$(git describe --abbrev=0 --tags).pk3
 
 mkdir -p build
-rm -f  "$name"
-zip -R "$name" "*.md" "*.txt" "*.zs" "*.json"
-gzdoom "$name" "$@"
+rm -f   "$name"
+zip -R0 "$name" "*.md" "*.txt" "*.zs" "*.json"
+gzdoom  "$name" "$@"

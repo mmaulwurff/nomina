@@ -1,27 +1,22 @@
 AddOptionMenu OptionsMenu
 {
-  Submenu "$NOMINA_OPTIONS_TITLE", na_Options
+  Submenu "$NA_OPTIONS_TITLE", na_Options
 }
 
 OptionMenu na_Options
 {
-  Title "$NOMINA_OPTIONS_TITLE"
+  Title "$NA_OPTIONS_TITLE"
 
-  StaticText ""
-  TextField  "$NOMINA_EDIT_WEAPON"  , na_SelectedWeaponName
-  Command    "$NOMINA_APPLY"        , na_ApplyWeaponNameChange
+  StaticText  ""
+  TextField   "$NA_ENEMY_NAME"            , na_aimed_enemy_name
+  Command     "$NA_RENAME_ENEMY_INSTANCE" , na_rename_enemy_instance
+  Command     "$NA_RENAME_ENEMY_CLASS"    , na_rename_enemy_class
 
-  StaticText ""
-  TextField  "$NOMINA_EDIT_ENEMY"   , na_AimedEnemyName
-  Command    "$NOMINA_APPLY"        , na_ApplyEnemyNameChange
+  StaticText  ""
+  TextField   "$NA_WEAPON_NAME"            , na_selected_weapon_name
+  Command     "$NA_RENAME_WEAPON_INSTANCE" , na_rename_weapon_instance
+  Command     "$NA_RENAME_WEAPON_CLASS"    , na_rename_weapon_class
 
-  StaticText ""
-  StaticText "$NOMINA_RENAME_WARNING_1", Black
-  StaticText "$NOMINA_RENAME_WARNING_2", Black
-
-  StaticText ""
-  SafeCommand "$NOMINA_CLEAR"       , na_ClearUserDefinedNames, "$NOMINA_CLEAR_PROMPT"
-
-  StaticText ""
-  StaticText "$NOMINA_CLEAR_WARNING", Black
+  StaticText  ""
+  SafeCommand "$NA_CLEAR", na_clear_user_defined_names, "$NA_CLEAR_PROMPT"
 }

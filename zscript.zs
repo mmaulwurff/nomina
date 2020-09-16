@@ -1,7 +1,17 @@
-version 4.3
+version "4.4.2"
 
-#include "zscript/nomina.zs"
-#include "zscript/data.zs"
-#include "zscript/api.zs"
+#include "zscript/common/event_handler.zs"
+#include "zscript/common/cvar.zs"
+#include "zscript/common/watcher.zs"
+#include "zscript/common/enemy_watcher.zs"
+#include "zscript/common/weapon_watcher.zs"
 
-#include "zscript/na_cvar.zs"
+#include "zscript/server/server.zs"
+#include "zscript/server/netevent_parser.zs"
+#include "zscript/server/watchers.zs"
+#include "zscript/server/instance_renamer.zs"
+#include "zscript/server/class_renamer.zs"
+#include "zscript/server/storage.zs"
+
+#include "zscript/client/client.zs"
+#include "zscript/client/menu_fields.zs"

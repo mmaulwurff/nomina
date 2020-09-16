@@ -28,9 +28,9 @@ class na_Cvar
 // public: /////////////////////////////////////////////////////////////////////////////////////////
 
   static
-  na_cvar of(String name, PlayerInfo player = NULL)
+  na_Cvar from(String name, PlayerInfo player = NULL)
   {
-    let result = new("na_cvar");
+    let result = new("na_Cvar");
 
     result._player = player;
     result._name   = name;
@@ -64,7 +64,7 @@ class na_Cvar
   }
 
   private
-  bool isLoaded()
+  bool isLoaded() const
   {
     return (_cvar != NULL);
   }

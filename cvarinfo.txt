@@ -1,3 +1,10 @@
-nosave string na_SelectedWeaponName;
-nosave string na_AimedEnemyName;
-nosave string na_UserDefinedNames;
+// Client variables ////////////////////////////////////////////////////////////////////////////////
+
+nosave string na_aimed_enemy_name;
+nosave string na_selected_weapon_name;
+
+user string na_register;
+
+// Server variables ////////////////////////////////////////////////////////////////////////////////
+
+nosave string na_user_defined_names;
