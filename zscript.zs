@@ -5,6 +5,7 @@ version "4.4.2"
 #include "zscript/common/watcher.zs"
 #include "zscript/common/enemy_watcher.zs"
 #include "zscript/common/weapon_watcher.zs"
+#include "zscript/common/log.zs"
 
 #include "zscript/server/server.zs"
 #include "zscript/server/netevent_parser.zs"

@@ -59,7 +59,7 @@ class na_Cvar
 
     if (!isLoaded())
     {
-      Console.Printf("[ERROR] Nomina: cvar %s not found.", _name);
+      na_Log.error(string.format("cvar %s not found", _name));
     }
   }
 

@@ -15,22 +15,21 @@
  * Nomina.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-class na_Watcher abstract play
+class na_Log
 {
 
 // public: /////////////////////////////////////////////////////////////////////////////////////////
 
-  virtual
-  void watch()
+  static
+  void error(string text)
   {
-    na_Log.error("override na_Watcher.watch()");
+    Console.printf("[ERROR] Nomina: %s.", text);
   }
 
-  virtual
-  Actor getWatched() const
+  static
+  void message(string text)
   {
-    na_Log.error("override na_Watcher.get()");
-    return NULL;
+    Console.printf("%s", text);
   }
 
-} // class na_Watcher
+} // class na_Log

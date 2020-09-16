@@ -85,7 +85,7 @@ class na_Storage
 
     if (DictionaryIterator.Create(result).Next() == false)
     {
-      Console.Printf("[ERROR] Nomina: no data in %s.", path);
+      na_Log.error(string.format("no data in %s", path));
     }
 
     return result;
