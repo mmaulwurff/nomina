@@ -64,6 +64,8 @@ class na_Server play
 
     case na_CommandResetWeaponInstance   : resetWeaponInstance (playerNumber); break;
     case na_CommandResetWeaponClass      : resetWeaponClass    (playerNumber); break;
+    case na_CommandResetEnemyInstance    : resetEnemyInstance  (playerNumber); break;
+    case na_CommandResetEnemyClass       : resetEnemyClass     (playerNumber); break;
 
     case na_CommandClearUserDefinedNames : clearUserDefinedNames(); break;
     }
@@ -122,6 +124,22 @@ class na_Server play
   void resetWeaponClass(int playerNumber)
   {
     Actor watched = mWeaponWatchers.of(playerNumber).getWatched();
+    if (watched == NULL) return;
+
+    mStorage.setName(watched.getClassName(), na_Renamer.getDefaultName(watched));
+    na_Renamer.resetClass(watched.getClass());
+  }
+
+  private
+  void resetEnemyInstance(int playerNumber)
+  {
+    na_Renamer.resetInstance(mEnemyWatchers.of(playerNumber).getWatched());
+  }
+
+  private
+  void resetEnemyClass(int playerNumber)
+  {
+    Actor watched = mEnemyWatchers.of(playerNumber).getWatched();
     if (watched == NULL) return;
 
     mStorage.setName(watched.getClassName(), na_Renamer.getDefaultName(watched));
