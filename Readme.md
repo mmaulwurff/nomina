@@ -1,5 +1,7 @@
 # Nomina
 
+Archived: the project move to https://github.com/mmaulwurff/doom-toolbox/
+
 An addon that adds custom names (tags) to a selection of custom Doom monsters
 and weapons.
 
